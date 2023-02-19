@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sprint-deployment
+  labels:
+    app: nginx_dev
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx_dev
+  template:
+    metadata:
+      labels:
+        app: nginx_dev
+    spec:
+      containers:
+      - name: sprint-dev
+        image: {Docker 이미지를 가져오기 위한 URL을 지정해주세요.}
+        ports:
+        - containerPort: 80
+          protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginxdev
+spec:
+  selector:
+    app: nginx_dev
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sprintingress
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+    appgw.ingress.kubernetes.io/override-frontend-port: "8080"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          service:
+            name: nginxdev
+            port: 
+              number: 80
+        pathType: Prefix

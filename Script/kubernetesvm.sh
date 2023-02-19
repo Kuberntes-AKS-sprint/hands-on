@@ -1,0 +1,44 @@
+#!bin/bash
+
+az group create \
+    --name sprint-RG \
+    --location koreacentral
+
+
+az vm create \
+    --resource-group sprint-RG \
+    --name sprint-master-01 \
+    --size Standard_B2s \
+    --image UbuntuLTS \
+    --location koreacentral \
+    --storage-sku Standard_LRS \
+    --authentication-type password \
+    --admin-username sprint \
+    --admin-password Azuresprint12#$ \
+    --public-ip-sku basic \
+    --custom-data cloud-init.txt
+	
+az vm create \
+    --resource-group sprint-RG \
+    --name sprint-worker-01 \
+    --size Standard_B1s \
+    --image UbuntuLTS \
+    --location koreacentral \
+    --storage-sku Standard_LRS \
+    --authentication-type password \
+    --admin-username sprint \
+    --admin-password Azuresprint12#$ \
+    --public-ip-sku basic \
+    --custom-data cloud-init.txt
+
+## 방화벽 설정 sprint-master-01
+az vm open-port --resource-group sprint-RG --name sprint-master-01 --port 80 --priority 310
+az vm open-port --resource-group sprint-RG --name sprint-master-01 --port 5000 --priority 320
+az vm open-port --resource-group sprint-RG --name sprint-master-01 --port 2049 --priority 330
+
+## 방화벽 설정 sprint-worker-01
+az vm open-port --resource-group sprint-RG --name sprint-worker-01 --port 80 --priority 310
+az vm open-port --resource-group sprint-RG --name sprint-worker-01 --port 5000 --priority 320
+az vm open-port --resource-group sprint-RG --name sprint-master-01 --port 2049 --priority 330
+
+

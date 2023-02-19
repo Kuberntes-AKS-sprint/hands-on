@@ -1,0 +1,3 @@
+FROM nginx
+COPY index.html /usr/share/nginx/html
+{명령어를 사용해 nginx config를 변경해 주세요.}

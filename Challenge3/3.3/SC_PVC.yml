@@ -1,0 +1,31 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: scsprint
+provisioner: file.csi.azure.com # replace with "kubernetes.io/azure-file" if aks version is less than 1.21
+allowVolumeExpansion: true
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=0
+  - gid=0
+  - mfsymlinks
+  - cache=strict
+  - actimeo=30
+parameters:
+  skuName: Premium_LRS
+
+---
+
+#pvc 생성
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvcsprint
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: scsprint
+  resources:
+    requests:
+      storage: 100Gi

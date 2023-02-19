@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sprint-deployment
+  labels:
+    app: nginx_sprint
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx_sprint
+  template:
+    metadata:
+      labels:
+        app: nginx_sprint
+    spec:
+      containers:
+      - name: sprintdevpod
+        image: {Docker 이미지를 가져오기 위한 URL을 지정해주세요.}
+        ports:
+        - containerPort: 80
+          protocol: TCP
