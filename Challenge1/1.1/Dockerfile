@@ -1,2 +1,2 @@
 FROM nginx
-COPY index.html {알맞은 값을 넣어 주세요.}
+COPY index.html /usr/share/nginx/html/index.html
