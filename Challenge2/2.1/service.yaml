@@ -4,7 +4,7 @@ metadata:
   name: {이름을 입력하세요.}
 spec:
   selector:
-    app: {레이블을 적어주세요.}
+    {레이블을 적어주세요.}
   ports:
   - protocol: TCP
     port: 80
