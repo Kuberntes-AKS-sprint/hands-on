@@ -1,3 +1,3 @@
 FROM node:7
 ADD sprintapp.js /sprintapp.js
-ENTRYPOINT ["node", "app.js"]
+ENTRYPOINT ["node", "sprintapp.js"]
