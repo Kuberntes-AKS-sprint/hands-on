@@ -18,5 +18,5 @@ az vm create \
     --public-ip-sku basic \
     --custom-data cloud-init.txt
 
-az vm open-port --resource-group sprint-RG --name sprint-jumpbox --port 80
-az vm open-port --resource-group sprint-RG --name sprint-jumpbox --port 5000
+az vm open-port --resource-group sprint-RG --name sprint-jumpbox --port 80 --priority 110
+az vm open-port --resource-group sprint-RG --name sprint-jumpbox --port 5000 --priority 120
