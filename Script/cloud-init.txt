@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 #Azure CLI Download
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
