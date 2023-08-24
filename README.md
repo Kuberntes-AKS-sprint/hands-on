@@ -10,7 +10,7 @@ echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt
 
 ```
 
-Container Runtime COnfiguration
+CRi Error
 
 ```
 rm /etc/containerd/config.toml
