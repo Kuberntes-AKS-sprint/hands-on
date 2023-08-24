@@ -19,7 +19,7 @@ systemctl restart containerd
 ```
 
 
-cd cd /lib/systemd/system/
+cd /lib/systemd/system/
 
 ```
 [Unit]
