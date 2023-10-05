@@ -34,32 +34,32 @@ apt-get install apache2-utils -y
 htpasswd -Bbn sprint 0000 > ~/registry/auth/htpasswd
 
 ##openssl genrsa 명령어로 RSA 기반의 Private Key생성
-openssl genrsa -des3 -out server.key 2048
+openssl genrsa -des3 -out server2.key 2048
 
 ## openssl req 명령어로 csr파일 생성
-openssl req -new -key server.key -out server.csr
+openssl req -new -key server2.key -out server2.csr
 
 ## private Key의 암호화 해제
-openssl rsa -in server.key -out server.key
+openssl rsa -in server2.key -out server2.key
 
 ## 다음과 같은 출력이 나오면 정상적으로 암호가 해제된것입니다.
-root@sprint-master-01:~/registry/certs# openssl rsa -in server.key -out server.key
-Enter pass phrase for server.key:
+root@sprint-master-01:~/registry/certs# openssl rsa -in server2.key -out server2.key
+Enter pass phrase for server2.key:
 writing RSA key
 
 ## SAN 설정을 위해 Config 파일을 다음과 같이 생성합니다.
 echo subjectAltName=DNS:registry.sprint.com,IP:127.0.0.1 > extfile.cnf
 
 ## 마지막으로 자체서명 인증서를 생성합니다.
-openssl x509 -req -days 800 -signkey server.key -in server.csr -out server.crt -extfile extfile.cnf
+openssl x509 -req -days 800 -signkey server2.key -in server2.csr -out server2.crt -extfile extfile.cnf
 
 ## Host DNS 추가
 echo 10.0.0.4 registry.sprint.com >> /etc/hosts
 cat /etc/hosts | tail -1
 
 ## Docker가 자체서명한 인증서를 신뢰할 수 있도록 등록해줍니다.
-cp server.crt /usr/share/ca-certificates/
-echo server.crt >> /etc/ca-certificates.conf
+cp server2.crt /usr/share/ca-certificates/
+echo server2.crt >> /etc/ca-certificates.conf
 update-ca-certificates
 
 
@@ -80,18 +80,16 @@ docker run -d \
 -v ~/registry/volume:/data \
 -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \
 -v ~/registry/certs:/certs \
--e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/server.crt \
--e REGISTRY_HTTP_TLS_KEY=/certs/server.key \
+-e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/server2.crt \
+-e REGISTRY_HTTP_TLS_KEY=/certs/server2.key \
 -e REGISTRY_HTTP_ADDR=0.0.0.0:5000 \
 registry:2
 
+## 나머지 Worker Node에 인증서를 보냅니다.
+scp ~/registry/certs/server2.crt sprint@10.0.0.5:/home/sprint
 
-## Client에서는 다음 작업을 진행합니다.
-
-scp ~/registry/certs/server.crt sprint@10.10.10.5:[전송받을경로]
-
-cp server.crt /usr/share/ca-certificates/
-echo server.crt >> /etc/ca-certificates.conf
+cp server2.crt /usr/share/ca-certificates/
+echo server2.crt >> /etc/ca-certificates.conf
 update-ca-certificates
 service docker restart
 systemctl restart containerd
