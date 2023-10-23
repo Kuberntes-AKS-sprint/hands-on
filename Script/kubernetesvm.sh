@@ -8,7 +8,7 @@ az group create \
 az vm create \
     --resource-group sprint-RG \
     --name sprint-master-01 \
-    --size Standard_B2s \
+    --size Standard_D4s_v3 \
     --image Ubuntu2204 \
     --location koreacentral \
     --storage-sku Standard_LRS \
@@ -21,7 +21,7 @@ az vm create \
 az vm create \
     --resource-group sprint-RG \
     --name sprint-worker-01 \
-    --size Standard_B1s \
+    --size Standard_D4s_v3 \
     --image Ubuntu2204 \
     --location koreacentral \
     --storage-sku Standard_LRS \
@@ -34,7 +34,7 @@ az vm create \
 az vm create \
     --resource-group sprint-RG \
     --name sprint-worker-02 \
-    --size Standard_B1s \
+    --size Standard_D4s_v3 \
     --image Ubuntu2204 \
     --location koreacentral \
     --storage-sku Standard_LRS \
