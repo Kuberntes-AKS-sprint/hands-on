@@ -18,6 +18,11 @@ rm /etc/containerd/config.toml
 systemctl restart containerd
 
 ```
+
+cd /etc/containerd
+vi config.toml
+
+
 ```
 disabled_plugins = []
 imports = []
@@ -272,6 +277,8 @@ version = 2
   gid = 0
   uid = 0
 ```
+
+systemctl restart containerd
 
 
 ### Prviate Registry
