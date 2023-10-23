@@ -18,10 +18,12 @@ rm /etc/containerd/config.toml
 systemctl restart containerd
 
 ```
-
+# 생성작업
+```
 cd /etc/containerd
-vi config.toml
 
+vi config.toml
+```
 
 ```
 disabled_plugins = []
