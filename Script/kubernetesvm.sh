@@ -9,7 +9,7 @@ az vm create \
     --resource-group sprint-RG \
     --name sprint-master-01 \
     --size Standard_B2s \
-    --image UbuntuLTS \
+    --image Ubuntu2204 \
     --location koreacentral \
     --storage-sku Standard_LRS \
     --authentication-type password \
@@ -22,7 +22,7 @@ az vm create \
     --resource-group sprint-RG \
     --name sprint-worker-01 \
     --size Standard_B1s \
-    --image UbuntuLTS \
+    --image Ubuntu2204 \
     --location koreacentral \
     --storage-sku Standard_LRS \
     --authentication-type password \
@@ -35,7 +35,7 @@ az vm create \
     --resource-group sprint-RG \
     --name sprint-worker-02 \
     --size Standard_B1s \
-    --image UbuntuLTS \
+    --image Ubuntu2204 \
     --location koreacentral \
     --storage-sku Standard_LRS \
     --authentication-type password \
