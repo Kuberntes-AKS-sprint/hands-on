@@ -9,7 +9,7 @@ az vm create \
     --resource-group sprint-RG \
     --name sprint-jumpbox \
     --size Standard_B1s \
-    --image UbuntuLTS \
+    --image Ubuntu2204 \
     --location koreacentral \
     --storage-sku Standard_LRS \
     --authentication-type password \
