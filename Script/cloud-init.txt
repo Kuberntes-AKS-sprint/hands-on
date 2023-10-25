@@ -32,5 +32,5 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plu
 
 # github
 sudo apt install git
-sudo git clone https://github.com/dodream28/handson.git 
+sudo git clone https://github.com/Kuberntes-AKS-sprint/hands-on.git
 
