@@ -1,4 +1,4 @@
-# Handson
+# Hands-on
 
 ## Kubernetes
 
