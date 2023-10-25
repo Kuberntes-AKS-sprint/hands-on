@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Azure CLI Download
+# Azure CLI Download
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 # Docker Registry 
@@ -23,15 +23,14 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plu
 
 
 # kubectl install
-sudo apt-get update
-sudo apt-get install -y ca-certificates curl
-sudo curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
-sudo echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-sudo apt-get update
-sudo apt-get install -y kubectl
+# sudo apt-get update
+# sudo apt-get install -y ca-certificates curl
+# sudo curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
+# sudo echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+# sudo apt-get update
+# sudo apt-get install -y kubectl
 
 # github
-
 sudo apt install git
 sudo git clone https://github.com/dodream28/handson.git 
 
