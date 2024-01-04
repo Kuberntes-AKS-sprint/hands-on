@@ -8,14 +8,14 @@ az group create \
 az vm create \
     --resource-group sprint-RG \
     --name sprint-jumpbox \
-    --size Standard_B1s \
+    --size Standard_D4s_v3 \
     --image Ubuntu2204 \
     --location koreacentral \
     --storage-sku Standard_LRS \
     --authentication-type password \
     --admin-username sprint \
-    --admin-password Azuresprint12#$ \
-    --public-ip-sku basic \
+    --admin-password password2024! \
+    --public-ip-sku Standard \
     --custom-data cloud-init.txt
 
 az vm open-port --resource-group sprint-RG --name sprint-jumpbox --port 80 --priority 110
