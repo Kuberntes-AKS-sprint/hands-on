@@ -14,8 +14,8 @@ az vm create \
     --storage-sku Standard_LRS \
     --authentication-type password \
     --admin-username sprint \
-    --admin-password Azuresprint12#$ \
-    --public-ip-sku basic \
+    --admin-password password2024! \
+    --public-ip-sku Standard \
     --custom-data cloud-init.txt
 	
 az vm create \
@@ -27,8 +27,8 @@ az vm create \
     --storage-sku Standard_LRS \
     --authentication-type password \
     --admin-username sprint \
-    --admin-password Azuresprint12#$ \
-    --public-ip-sku basic \
+    --admin-password password2024! \
+    --public-ip-sku Standard \
     --custom-data cloud-init.txt
     
 az vm create \
@@ -40,8 +40,8 @@ az vm create \
     --storage-sku Standard_LRS \
     --authentication-type password \
     --admin-username sprint \
-    --admin-password Azuresprint12#$ \
-    --public-ip-sku basic \
+    --admin-password password2024! \
+    --public-ip-sku Standard \
     --custom-data cloud-init.txt
 
 ## 방화벽 설정 sprint-control-plane
